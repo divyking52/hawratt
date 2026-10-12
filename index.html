@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hawratt Khanavaal â€” Authentic Maharashtrian in Goa</title>
+<meta name="description" content="Hawratt Khanavaal â€” authentic Maharashtrian home-style food in Siolim, Goa. Thalis, misal, vada pav, solkadhi. Kha Re Hawratt." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --orange: #ff7a00;
+    --orange-cta: #e94222;
+    --orange-deep: #e86a00;
+    --cream: #fef6df;
+    --cream-2: #f8edd0;
+    --paper: #ffffff;
+    --ink: #0b0b0b;
+    --ink-2: #141414;
+    --ink-3: #1c1c1c;
+    --muted: #6b655c;
+    --muted-soft: #8a8378;
+    --line: rgba(11,11,11,0.1);
+    --line-dark: rgba(255,255,255,0.12);
+    --white: #ffffff;
+    --font-display: "Anton", sans-serif;
+    --font-body: "Outfit", sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  ul { list-style: none; }
+  .container { width: min(1240px, calc(100% - 2.5rem)); margin-inline: auto; }
+
+  /* NAV */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 104px; padding: 0 clamp(1.25rem, 4vw, 5rem);
+    color: #fff;
+    transition: background .35s ease, backdrop-filter .35s ease, border-color .35s ease, height .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom-color: var(--line-dark);
+    height: 80px;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: .7rem;
+    font-family: var(--font-display);
+    letter-spacing: .06em; font-size: 1.55rem;
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-brand:hover { transform: scale(1.03); }
+  .nav-brand img {
+    width: 42px; height: 42px; object-fit: contain; filter: brightness(1.05);
+    transition: transform .45s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-brand:hover img { transform: rotate(-8deg) scale(1.08); }
+  .nav-links {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 1.75rem; font-size: .95rem; font-weight: 500;
+  }
+  .nav-links a {
+    position: relative; opacity: .9;
+    transition: opacity .25s, color .25s;
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: -4px;
+    width: 100%; height: 1.5px; background: var(--orange-cta);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-links a:hover { opacity: 1; color: var(--orange-cta); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: .55rem;
+    background: var(--orange-cta); color: #fff; border: none; border-radius: 999px;
+    padding: 14px 24px; font-size: .78rem; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    transition: background .3s, transform .3s, box-shadow .3s, gap .3s;
+  }
+  .nav-cta:hover {
+    background: #ff5538; transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(233,66,34,.35); gap: .75rem;
+  }
+  .nav-right { display: flex; align-items: center; gap: 1rem; margin-left: auto; }
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 50%;
+    place-items: center;
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    position: relative;
+    transition: background .25s;
+  }
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform .3s cubic-bezier(.22,1,.36,1);
+  }
+  .menu-toggle span::before { top: -6px; }
+  .menu-toggle span::after { top: 6px; }
+  .menu-toggle.is-open span { background: transparent; }
+  .menu-toggle.is-open span::before { top: 0; transform: rotate(45deg); }
+  .menu-toggle.is-open span::after { top: 0; transform: rotate(-45deg); }
+  .nav.scrolled .menu-toggle {
+    border-color: rgba(255,255,255,.4);
+    background: rgba(255,255,255,.08);
+  }
+
+  /* HERO â€” Dinevo match */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+    background: #000;
+  }
+  .hero-bg {
+    position: absolute; inset: -8% 0;
+    background:
+      linear-gradient(90deg,
+        #000 0%,
+        #000 22%,
+        rgba(0,0,0,.78) 42%,
+        rgba(0,0,0,.35) 62%,
+        rgba(0,0,0,.12) 78%,
+        transparent 100%),
+      linear-gradient(180deg, rgba(0,0,0,.2) 0%, transparent 30%, rgba(0,0,0,.35) 100%),
+      url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/63817f69-f557-464f-a947-da2414cbd38d/hawratt-food-2.jpg") right center / cover no-repeat;
+    will-change: transform;
+    transform: translate3d(0,0,0) scale(1.06);
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px clamp(1.5rem, 5vw, 80px) 72px;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .hero-content {
+    width: min(1000px, 100%);
+    will-change: transform, opacity;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 2rem);
+    letter-spacing: .02em;
+    color: var(--orange-cta);
+    margin-bottom: .85rem;
+    opacity: 0; animation: fadeUp .8s .15s forwards;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.8rem, 11vw, 8.75rem);
+    line-height: .95;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    font-weight: 400;
+    max-width: 11ch;
+    color: #fff;
+    opacity: 0; animation: fadeUp .9s .28s forwards;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 1.15rem;
+    margin-top: 2rem; max-width: 620px;
+    opacity: 0; animation: fadeUp .9s .48s forwards;
+  }
+  .hero-proof {
+    display: flex; align-items: center; flex-shrink: 0;
+  }
+  .hero-avatars { display: flex; align-items: center; }
+  .hero-avatars span {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid #0b0b0b; margin-left: -12px;
+    background: center / cover no-repeat;
+  }
+  .hero-avatars span:first-child { margin-left: 0; background-image: url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/4d6db942-85d5-4728-83e6-3293fe3d1e05/hawratt-food-1.jpg"); }
+  .hero-avatars span:nth-child(2) { background-image: url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/94c89934-fbc9-4514-b7fe-7020d3de88fe/hawratt-thali-1.jpg"); }
+  .hero-avatars span:nth-child(3) { background-image: url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/2128a0b7-1176-4a93-ad53-0be36f9ed623/hawratt-dish-1.jpg"); }
+  .hero-badge {
+    width: 44px; height: 44px; border-radius: 50%;
+    margin-left: -12px;
+    background: var(--orange-cta); color: #fff;
+    font-weight: 700; font-size: .78rem;
+    display: grid; place-items: center;
+    border: 2px solid #0b0b0b;
+    position: relative; z-index: 1;
+  }
+  .hero-meta p {
+    font-size: .95rem; color: rgba(255,255,255,.88);
+    line-height: 1.45; max-width: 28rem;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+    margin-top: 1.75rem;
+    opacity: 0; animation: fadeUp .9s .62s forwards;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .55rem;
+    background: var(--orange-cta); color: #fff;
+    padding: 16px 28px; border-radius: 999px;
+    font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s, box-shadow .35s, gap .35s;
+  }
+  .btn-primary:hover {
+    background: #ff5538; transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 36px rgba(233,66,34,.4); gap: .8rem;
+  }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: .45rem;
+    font-size: .9rem; color: var(--ink); border-bottom: 1px solid rgba(11,11,11,.25);
+    padding-bottom: .2rem; transition: color .25s, border-color .25s, gap .3s, transform .3s;
+  }
+  .btn-ghost:hover { color: var(--orange-cta); border-color: var(--orange-cta); gap: .7rem; transform: translateX(2px); }
+  .hero .btn-ghost,
+  .signature .btn-ghost,
+  .event-card .btn-ghost {
+    color: #fff; border-bottom-color: rgba(255,255,255,.35);
+  }
+
+  /* Signature float card â€” Dinevo style */
+  .hero-float-card {
+    position: absolute;
+    right: clamp(1.25rem, 5vw, 5.5rem);
+    bottom: clamp(2rem, 8vh, 5.5rem);
+    z-index: 3;
+    width: min(360px, 88vw);
+    will-change: transform;
+  }
+  .hero-float-stack {
+    position: absolute; inset: 8px -8px -8px 8px;
+    background: rgba(255,255,255,.55);
+    border-radius: 12px;
+    transform: rotate(2.5deg);
+  }
+  .hero-float-stack::before {
+    content: "";
+    position: absolute; inset: 6px -10px -10px 6px;
+    background: rgba(255,255,255,.4);
+    border-radius: 12px;
+    transform: rotate(2deg);
+  }
+  .hero-float-inner {
+    position: relative;
+    background: #fff; color: #111;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 28px 70px rgba(0,0,0,.45);
+    animation: floatY 5.5s ease-in-out infinite;
+    transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+  }
+  .hero-float-card:hover .hero-float-inner {
+    transform: translateY(-8px);
+    box-shadow: 0 36px 80px rgba(0,0,0,.55);
+  }
+  .hero-float-top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: .75rem; padding: 4px 4px 10px;
+  }
+  .hero-float-top p {
+    font-size: 1.05rem; font-weight: 600; line-height: 1.25; color: #111;
+  }
+  .hero-float-top .arr {
+    width: 28px; height: 28px; flex-shrink: 0;
+    color: var(--orange-cta);
+    display: grid; place-items: center;
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .hero-float-card:hover .hero-float-top .arr { transform: translateX(4px); }
+  .hero-float-img {
+    border-radius: 10px; overflow: hidden; height: 225px;
+  }
+  .hero-float-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  .hero-float-card:hover .hero-float-img img { transform: scale(1.08); }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MARQUEE */
+  .marquee {
+    background: var(--cream-2); border-block: 1px solid var(--line);
+    overflow: hidden; padding: 1.1rem 0;
+  }
+  .marquee-track {
+    display: flex; gap: 3rem; width: max-content;
+    animation: marquee 28s linear infinite;
+    font-family: var(--font-display); font-size: 1.35rem;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 3rem; }
+  .marquee-track span::after {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--orange-cta);
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS COMMON */
+  section { padding: 6rem 0; }
+  .section-label {
+    display: inline-block; font-size: .78rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--orange-cta); margin-bottom: .85rem; font-weight: 600;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: .95; letter-spacing: .02em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .section-head {
+    display: flex; justify-content: space-between; align-items: end; gap: 2rem;
+    margin-bottom: 2.75rem; flex-wrap: wrap;
+  }
+  .section-head p { max-width: 360px; color: var(--muted); font-size: .95rem; }
+  .section-dark .section-title { color: #fff; }
+  .section-dark .section-head p { color: rgba(255,255,255,.7); }
+  .section-dark .section-label { color: var(--orange-cta); }
+
+  /* ABOUT â€” centered Dinevo â€œMore About Usâ€ block */
+  .about {
+    background: var(--paper);
+    padding: clamp(4.5rem, 10vw, 7rem) 0;
+    text-align: center;
+  }
+  .about-inner {
+    width: min(980px, calc(100% - 2.5rem));
+    margin-inline: auto;
+  }
+  .about-eyebrow {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    color: var(--orange-cta);
+    letter-spacing: .04em;
+    margin-bottom: 1.1rem;
+  }
+  .about-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3.1vw, 2.5rem);
+    line-height: 1.22;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 auto 1.75rem;
+    max-width: 36ch;
+  }
+  .about-lead .muted {
+    color: #9a9488;
+  }
+  .about .btn-primary {
+    margin-inline: auto;
+  }
+
+  /* SPECIALS â€” list + fanned stock image stack */
+  .specials-section {
+    background: var(--cream);
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6rem);
+    overflow: hidden;
+  }
+  .specials-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: clamp(2rem, 5vw, 3.25rem);
+    font-size: clamp(.95rem, 1.4vw, 1.3rem);
+    font-weight: 500;
+  }
+  .specials-head .accent {
+    color: var(--orange-cta);
+    font-weight: 600;
+  }
+  .specials-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+  }
+  .specials-list {
+    display: grid;
+    gap: .35rem;
+  }
+  .specials-list button {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.6vw, 2.15rem);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: .55rem 0;
+    border-radius: .4rem;
+    transition: color .3s, transform .35s cubic-bezier(.22,1,.36,1), padding-left .35s;
+  }
+  .specials-list button:hover,
+  .specials-list button.is-active {
+    color: var(--orange-cta);
+    padding-left: .35rem;
+  }
+  .specials-list button .num {
+    opacity: .45;
+    font-size: .85em;
+  }
+  .specials-stack {
+    position: relative;
+    width: min(100%, 520px);
+    margin-inline: auto;
+    aspect-ratio: 1 / 1.05;
+  }
+  .specials-stack figure {
+    position: absolute;
+    inset: 8% 12% 8% 12%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    border: 3px solid #fff;
+    box-shadow: 0 22px 50px rgba(0,0,0,.22);
+    transition: transform .55s cubic-bezier(.22,1,.36,1), z-index 0s .15s, box-shadow .4s;
+  }
+  .specials-stack figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .specials-stack figure:nth-child(1) { transform: rotate(-14deg) translate(-6%, 4%); z-index: 1; }
+  .specials-stack figure:nth-child(2) { transform: rotate(-6deg) translate(2%, -2%); z-index: 2; }
+  .specials-stack figure:nth-child(3) { transform: rotate(5deg) translate(8%, 2%); z-index: 3; }
+  .specials-stack figure:nth-child(4) { transform: rotate(12deg) translate(-2%, -4%); z-index: 4; }
+  .specials-stack figure.is-front {
+    z-index: 10;
+    transform: rotate(-2deg) translate(0, 0) scale(1.04);
+    box-shadow: 0 28px 60px rgba(0,0,0,.32);
+  }
+
+  /* MENU â€” black + white hover popout (Dinevo) */
+  .menu {
+    background: #000;
+    color: #fff;
+    padding: clamp(4.5rem, 8vw, 6.5rem) 0;
+  }
+  .menu .section-label { color: var(--orange-cta); }
+  .menu .section-title { color: #fff; }
+  .menu .section-head .btn-ghost {
+    color: #fff;
+    border-bottom-color: rgba(255,255,255,.35);
+  }
+  .menu .section-head .btn-ghost:hover {
+    color: var(--orange-cta);
+    border-color: var(--orange-cta);
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 1.25rem;
+  }
+  .menu-card {
+    position: relative;
+    color: #fff;
+    z-index: 1;
+    isolation: isolate;
+  }
+  .menu-card:hover,
+  .menu-card:focus-within,
+  .menu-card.is-open {
+    z-index: 8;
+  }
+  .menu-card-base .menu-img {
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3.35;
+    background: #1a1a1a;
+  }
+  .menu-card-base .menu-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  .menu-card:hover .menu-card-base .menu-img img {
+    transform: scale(1.06);
+  }
+  .menu-card-base h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: .9rem 0 .25rem;
+    color: #fff;
+  }
+  .menu-card-base .price {
+    color: rgba(255,255,255,.88);
+    font-weight: 500;
+    font-size: .95rem;
+  }
+  .menu-card-popup {
+    position: absolute;
+    inset: -8% -6% auto;
+    min-height: 108%;
+    background: #fff;
+    color: #0b0b0b;
+    border-radius: 16px;
+    padding: 1.35rem 1.2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .55rem;
+    box-shadow: 0 28px 70px rgba(0,0,0,.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(18px) scale(.94);
+    transition:
+      opacity .35s cubic-bezier(.22,1,.36,1),
+      transform .45s cubic-bezier(.22,1,.36,1),
+      visibility .35s;
+  }
+  .menu-card:hover .menu-card-popup,
+  .menu-card:focus-within .menu-card-popup,
+  .menu-card.is-open .menu-card-popup {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+  .menu-card-popup h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.85rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #0b0b0b;
+    line-height: 1;
+  }
+  .menu-card-popup p {
+    font-size: .88rem;
+    color: #5c574f;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .menu-card-popup .popup-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: .35rem 0 .15rem;
+    background: #eee;
+  }
+  .menu-card-popup .popup-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .menu-card-popup .price {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    letter-spacing: .03em;
+    color: #0b0b0b;
+    font-weight: 400;
+  }
+  .menu-card-popup .book-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    margin-top: .15rem;
+    padding: .7rem 1.15rem;
+    border-radius: 999px;
+    background: var(--orange-cta);
+    color: #fff !important;
+    border: none;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s, transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+  }
+  .menu-card-popup .book-link:hover,
+  .menu-card-popup .book-link:focus-visible {
+    background: #ff5538;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(233,66,34,.35);
+  }
+  .menu-card-popup .stars {
+    margin-top: auto;
+    padding-top: .75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .45rem;
+    font-size: .78rem;
+    color: #6b655c;
+  }
+  .menu-card-popup .stars .star-row {
+    color: var(--orange-cta);
+    letter-spacing: .06em;
+    font-size: .72rem;
+  }
+
+  /* VIDEO BLEED â€” full-bleed stock video + cream torn edge */
+  .video-bleed {
+    position: relative;
+    width: 100%;
+    height: clamp(380px, 72vw, 720px);
+    overflow: hidden;
+    background: #000;
+    margin: 0;
+    padding: 0;
+  }
+  .video-bleed video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-bleed-edge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    width: 100%;
+    height: clamp(80px, 14vw, 160px);
+    z-index: 2;
+    pointer-events: none;
+    line-height: 0;
+  }
+  .video-bleed-edge img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+  }
+
+  /* CATEGORIES â€” cream staggered white cards (Dinevo â€œTaste of Our Kitchenâ€) */
+  .categories {
+    background: var(--cream);
+    color: var(--ink);
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(5rem, 10vw, 8rem);
+  }
+  .categories .section-head {
+    display: block;
+    margin-bottom: clamp(2.25rem, 5vw, 3.25rem);
+    width: fit-content;
+    max-width: 100%;
+  }
+  .categories .section-title {
+    color: var(--ink);
+    font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  }
+  .categories .section-title .title-line {
+    display: block;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .categories .section-title .title-line { white-space: normal; }
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.85rem, 1.6vw, 1.35rem);
+    align-items: start;
+    padding-bottom: clamp(2rem, 6vw, 4.5rem);
+    perspective: 1200px;
+  }
+  .cat-card {
+    background: #fff;
+    border-radius: 1.15rem;
+    padding: clamp(1.35rem, 2.2vw, 1.75rem) clamp(1.1rem, 1.8vw, 1.45rem) 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: clamp(420px, 48vw, 520px);
+    box-shadow: 0 1px 0 rgba(11,11,11,.04);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s;
+  }
+  .cat-card:nth-child(1) { margin-top: 0; }
+  .cat-card:nth-child(2) { margin-top: clamp(1.75rem, 4vw, 3.25rem); }
+  .cat-card:nth-child(3) { margin-top: clamp(3.5rem, 8vw, 6.5rem); }
+  .cat-card:nth-child(4) { margin-top: clamp(5.25rem, 12vw, 9.75rem); }
+  .cat-card:hover {
+    box-shadow: 0 22px 48px rgba(11,11,11,.12);
+  }
+  .cat-card.is-tilting {
+    transition: transform .12s ease-out, box-shadow .45s;
+  }
+  .cat-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 2.2vw, 2rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: .45rem;
+    color: var(--ink);
+  }
+  .cat-card .num {
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--ink);
+    margin-bottom: 1.15rem;
+  }
+  .cat-card .thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    margin-bottom: 1.15rem;
+    background: #f0e8d4;
+  }
+  .cat-card .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  .cat-card:hover .thumb img { transform: scale(1.06); }
+  .cat-card p {
+    color: var(--ink);
+    font-size: .86rem;
+    line-height: 1.55;
+    margin-bottom: 1.35rem;
+    flex: 1;
+    max-width: 26ch;
+  }
+  .cat-card .cat-link {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color .25s, border-color .25s;
+  }
+  .cat-card .cat-link:hover {
+    color: var(--orange-cta);
+    border-color: var(--orange-cta);
+  }
+
+  /* SIGNATURE â€” Dinevo-style sticky title + staggered stock gallery */
+  .signature {
+    position: relative;
+    background: #000;
+    color: #fff;
+    padding: 0 0 4rem;
+    overflow: clip;
+  }
+  .signature-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 6.5rem clamp(1.25rem, 4vw, 5rem) 2rem;
+    pointer-events: none;
+  }
+  .signature-sticky::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 35% 0;
+    background: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .signature-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    pointer-events: auto;
+  }
+  .signature-top .section-label {
+    color: var(--orange-cta);
+    margin: 0;
+  }
+  .signature-tabs {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: .55rem .65rem;
+    justify-content: end;
+  }
+  .signature-tabs button {
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 999px;
+    padding: .4rem 1.05rem;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    color: #fff;
+    background: transparent;
+    transition: background .3s, color .3s, border-color .3s, transform .3s;
+  }
+  .signature-tabs button.active,
+  .signature-tabs button:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: translateY(-1px);
+  }
+  .signature-title-wrap {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: clamp(1.5rem, 6vh, 4rem) 0 42vh;
+    pointer-events: none;
+  }
+  .signature h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 9.5vw, 8.75rem);
+    line-height: .92;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    max-width: 12ch;
+    color: #fff;
+    text-shadow: 0 2px 40px rgba(0,0,0,.55);
+    transition: opacity .28s, transform .4s cubic-bezier(.22,1,.36,1);
+  }
+  .signature-sub {
+    margin-top: 1rem;
+    font-size: .95rem;
+    color: rgba(255,255,255,.72);
+    max-width: 28ch;
+    margin-inline: auto;
+    transition: opacity .28s, transform .4s cubic-bezier(.22,1,.36,1);
+    display: block;
+  }
+  #sigTitle, #sigSub {
+    will-change: opacity, transform;
+  }
+  .signature-gallery {
+    position: relative;
+    z-index: 2;
+    margin-top: -38vh;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3.5rem, 10vh, 7rem);
+    padding: 0 clamp(1.25rem, 4vw, 5rem) 3rem;
+    overflow-anchor: none;
+  }
+  .sig-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    min-height: min(58vh, 560px);
+  }
+  .sig-row--in {
+    padding-inline: clamp(1.5rem, 4vw, 3.5rem);
+  }
+  .sig-row figure {
+    width: min(28vw, 380px);
+    aspect-ratio: 3 / 3.45;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #1a1a1a;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .4s;
+  }
+  .sig-row figure:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+  .sig-row figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sig-row[data-panel].is-dim figure {
+    opacity: .55;
+  }
+  .sig-row[data-panel].is-active figure {
+    opacity: 1;
+  }
+
+  /* STORY / GALLERY â€” white */
+  .story { background: var(--paper); }
+  .story-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    perspective: 1200px;
+  }
+  .story-card {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 1rem; overflow: hidden; color: var(--ink);
+    transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .35s, box-shadow .45s;
+  }
+  .story-card:hover {
+    transform: translateY(-10px) rotate(-0.4deg);
+    border-color: rgba(233,66,34,.35);
+    box-shadow: 0 22px 48px rgba(0,0,0,.12);
+  }
+  .story-card .img-wrap { overflow: hidden; height: 280px; }
+  .story-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .75s cubic-bezier(.22,1,.36,1);
+  }
+  .story-card:hover img { transform: scale(1.12); }
+  .story-card .body { padding: 1.1rem 1.15rem 1.3rem; }
+  .story-card h3 {
+    font-size: 1rem; margin-bottom: .55rem; line-height: 1.35;
+    transition: color .25s;
+  }
+  .story-card:hover h3 { color: var(--orange-cta); }
+  .story-meta { display: flex; gap: 1rem; color: var(--muted); font-size: .8rem; }
+
+  /* CONTACT STRIP â€” cream floating card on full-bleed food (Dinevo) */
+  .contact-strip {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+    background: #1a1512;
+    min-height: clamp(520px, 70vw, 680px);
+    display: flex;
+    align-items: center;
+  }
+  .contact-strip-bg {
+    position: absolute;
+    inset: -12% 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.15) 38%, transparent 62%),
+      url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/5ae25a75-0a88-49e4-9942-7c21d8c17695/contact-bg.jpg") right center / cover no-repeat;
+    will-change: transform;
+  }
+  .contact-strip .container {
+    position: relative;
+    z-index: 2;
+    width: min(1240px, calc(100% - 2.5rem));
+  }
+  .contact-panel {
+    width: min(100%, 620px);
+    background: var(--cream);
+    border-radius: 1.5rem;
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+    color: var(--ink);
+    box-shadow: 0 28px 70px rgba(0,0,0,.28);
+  }
+  .contact-panel .section-label {
+    margin-bottom: .9rem;
+  }
+  .contact-panel h3 {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4.2vw, 3.35rem);
+    line-height: .95;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    margin-bottom: .85rem;
+    color: var(--ink);
+    max-width: 12ch;
+  }
+  .contact-panel > .contact-lead {
+    color: var(--ink);
+    font-size: .95rem;
+    line-height: 1.5;
+    margin-bottom: clamp(1.5rem, 3vw, 2.1rem);
+    max-width: 42ch;
+  }
+  .contact-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  .contact-box {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.15rem 1.2rem 0.35rem;
+  }
+  .contact-box h4 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: .85rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dotted rgba(11,11,11,.28);
+    color: var(--ink);
+    font-size: .88rem;
+    line-height: 1.35;
+  }
+  .contact-box .contact-row:last-child {
+    border-bottom: none;
+  }
+  .contact-row svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .contact-row a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    word-break: break-word;
+  }
+  .contact-row a:hover { color: var(--orange-cta); }
+  .contact-row span { color: var(--ink); }
+
+  /* TESTIMONIALS â€” staggered 3-col quote + profile cards (Dinevo) */
+  .testimonials { background: var(--cream); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
+    align-items: start;
+  }
+  .review-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+  .review-col--mid {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+  .review-quote {
+    position: relative;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.6rem 1.45rem 1.7rem;
+    box-shadow: 0 10px 28px rgba(11,11,11,.05);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+  .review-quote .qmark {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 4.5rem;
+    line-height: .55;
+    color: rgba(11,11,11,.12);
+    margin-bottom: .85rem;
+    user-select: none;
+  }
+  .review-quote--flip {
+    justify-content: flex-start;
+  }
+  .review-quote--flip .qmark {
+    order: 3;
+    margin: auto 0 0;
+    padding-top: 1.1rem;
+    margin-bottom: 0;
+  }
+  .review-quote .stars {
+    color: var(--orange-cta);
+    letter-spacing: .12em;
+    font-size: .78rem;
+    margin-bottom: .85rem;
+  }
+  .review-quote p {
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.55;
+    font-weight: 500;
+  }
+  .review-who {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: #fff;
+    border-radius: 0.9rem;
+    padding: 0.85rem 1rem;
+    box-shadow: 0 10px 28px rgba(11,11,11,.05);
+  }
+  .review-who img {
+    width: 52px;
+    height: 52px;
+    border-radius: 0.55rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .review-who strong {
+    display: block;
+    color: var(--ink);
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .review-who span {
+    display: block;
+    color: var(--muted);
+    font-size: .82rem;
+    margin-top: .2rem;
+  }
+
+  /* EVENTS â€” white */
+  .events { background: var(--paper); }
+  .events-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .event-card {
+    position: relative; min-height: 320px; border-radius: 1.15rem; overflow: hidden;
+    border: 1px solid var(--line);
+    transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .35s, box-shadow .45s;
+  }
+  .event-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(233,66,34,.35);
+    box-shadow: 0 24px 50px rgba(0,0,0,.15);
+  }
+  .event-card .bg {
+    position: absolute; inset: -10%;
+    background: center / cover no-repeat;
+    transition: transform .8s cubic-bezier(.22,1,.36,1);
+    will-change: transform;
+    transform: translate3d(0, var(--py, 0px), 0) scale(1.08);
+  }
+  .event-card:hover .bg { transform: translate3d(0, var(--py, 0px), 0) scale(1.14); }
+  .event-card .shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.9) 100%);
+  }
+  .event-card .info {
+    position: absolute; inset: auto 0 0 0; padding: 1.5rem;
+    transform: translateY(8px); transition: transform .45s cubic-bezier(.22,1,.36,1);
+  }
+  .event-card:hover .info { transform: translateY(0); }
+  .event-card h3 {
+    font-family: var(--font-display); font-size: 2rem; letter-spacing: .03em;
+    text-transform: uppercase; margin-bottom: .45rem; max-width: 16ch;
+  }
+  .event-card p { color: #cfc5b8; margin-bottom: .9rem; }
+
+  /* BLOG â€” cream */
+  .blog { background: var(--cream); }
+  .blog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .blog-card {
+    display: grid; grid-template-columns: .9fr 1.1fr; gap: 0;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 1.1rem; overflow: hidden;
+    color: var(--ink);
+    transition: border-color .35s, transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s;
+  }
+  .blog-card:hover {
+    border-color: rgba(233,66,34,.35);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.1);
+  }
+  .blog-card .img-wrap { overflow: hidden; min-height: 220px; }
+  .blog-card img {
+    width: 100%; height: 100%; min-height: 220px; object-fit: cover;
+    transition: transform .75s cubic-bezier(.22,1,.36,1);
+  }
+  .blog-card:hover img { transform: scale(1.1); }
+  .blog-card .body { padding: 1.4rem 1.35rem; display: flex; flex-direction: column; justify-content: center; }
+  .blog-card .meta { color: var(--muted); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .7rem; }
+  .blog-card h3 {
+    font-family: var(--font-display); font-size: 1.55rem; letter-spacing: .03em;
+    text-transform: uppercase; line-height: 1.05;
+    transition: color .25s;
+  }
+  .blog-card:hover h3 { color: var(--orange-cta); }
+
+  /* FOOTER â€” black + stock strip (Dinevo) */
+  .footer {
+    background: #000;
+    color: var(--cream);
+    padding: 0;
+    border: none;
+  }
+  .footer-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    width: 100%;
+  }
+  .footer-strip figure {
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #111;
+  }
+  .footer-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  .footer-strip figure:hover img { transform: scale(1.06); }
+  .footer-main {
+    width: min(1240px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding: clamp(2.75rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
+    border-top: 1px dotted rgba(254,246,223,.28);
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    padding-bottom: 0;
+    border: none;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: clamp(220px, 28vw, 320px);
+  }
+  .footer-cta {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    line-height: 1.15;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--cream);
+    max-width: 16ch;
+  }
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 14vw, 9.5rem);
+    line-height: .85;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+  .footer-right { display: flex; flex-direction: column; gap: 2.5rem; }
+  .footer-newsletter h4,
+  .footer-links h4 {
+    font-family: var(--font-body);
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--cream);
+    margin-bottom: .85rem;
+  }
+  .newsletter {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 999px;
+    padding: .35rem .35rem .35rem 1.15rem;
+    max-width: 420px;
+  }
+  .newsletter input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: .7rem 0;
+    color: var(--cream);
+    outline: none;
+    font-size: .92rem;
+  }
+  .newsletter input::placeholder { color: rgba(254,246,223,.45); }
+  .newsletter button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--cream);
+    display: grid;
+    place-items: center;
+    font-size: 1.15rem;
+    padding: 0;
+    transition: color .25s, transform .25s;
+  }
+  .newsletter button:hover {
+    color: var(--orange-cta);
+    transform: translateX(3px);
+    box-shadow: none;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    color: rgba(254,246,223,.72);
+    margin-bottom: .55rem;
+    font-size: .92rem;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-col a.ext {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+  }
+  .footer-col a.ext::after {
+    content: "â†—";
+    font-size: .75em;
+    opacity: .7;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px dotted rgba(254,246,223,.2);
+    color: rgba(254,246,223,.45);
+    font-size: .82rem;
+  }
+
+  /* MOBILE NAV */
+  .mobile-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,.72);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .mobile-drawer.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .drawer-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(340px, 86vw);
+    height: 100%;
+    height: 100dvh;
+    background: #0b0b0b;
+    color: #fff;
+    padding: 1.25rem 1.35rem 2rem;
+    transform: translateX(110%);
+    transition: transform .4s cubic-bezier(.22,1,.36,1);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: -20px 0 60px rgba(0,0,0,.4);
+    overflow-y: auto;
+  }
+  .mobile-drawer.open .drawer-panel { transform: translateX(0); }
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .drawer-head .brand {
+    font-family: var(--font-display);
+    letter-spacing: .06em;
+    font-size: 1.25rem;
+  }
+  .drawer-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.3);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: rgba(255,255,255,.06);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .drawer-panel nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+  .drawer-panel nav a {
+    font-size: clamp(1.45rem, 5vw, 1.75rem);
+    font-family: var(--font-display);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    padding: 1rem 0;
+    color: #fff;
+    transition: color .25s, padding-left .25s;
+  }
+  .drawer-panel nav a:hover,
+  .drawer-panel nav a:focus-visible {
+    color: var(--orange-cta);
+    padding-left: .35rem;
+  }
+  .drawer-cta {
+    margin-top: 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: var(--orange-cta);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1rem 1.25rem;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .drawer-cta:hover { background: #ff5538; }
+  body.nav-open { overflow: hidden; }
+
+  /* SCROLL IN / OUT â€” Dinevo-style appear */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 72px, 0);
+    transition:
+      opacity .85s cubic-bezier(.22,1,.36,1),
+      transform .85s cubic-bezier(.22,1,.36,1);
+    transition-delay: var(--d, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.from-left { transform: translate3d(-80px, 24px, 0); }
+  .reveal.from-right { transform: translate3d(80px, 24px, 0); }
+  .reveal.from-scale { transform: translate3d(0, 40px, 0) scale(.92); }
+  .reveal.tilt-l { transform: translate3d(-70px, 30px, 0) rotate(-8deg); }
+  .reveal.tilt-r { transform: translate3d(70px, 30px, 0) rotate(8deg); }
+  .reveal.visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  .reveal.out-up {
+    opacity: 0;
+    transform: translate3d(0, -48px, 0);
+  }
+  .reveal.out-down {
+    opacity: 0;
+    transform: translate3d(0, 72px, 0);
+  }
+
+  .marquee-track { will-change: transform; }
+
+  .footer-col a {
+    transition: color .25s, padding-left .3s;
+  }
+  .footer-col a:hover { padding-left: .2rem; }
+
+  @media (max-width: 980px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: grid; }
+    .nav {
+      height: 72px;
+      padding: 0 1rem;
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(14px);
+      border-bottom-color: rgba(255,255,255,.08);
+    }
+    .nav.scrolled { height: 64px; }
+    .nav-cta { padding: 11px 16px; font-size: .7rem; }
+    .nav-brand { font-size: 1.25rem; gap: .5rem; }
+    .nav-brand img { width: 34px; height: 34px; }
+    .nav-right { gap: .65rem; }
+    .hero-float-card { width: min(280px, 42vw); }
+    .hero-float-img { height: 160px; }
+    .events-grid, .blog-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+    .review-col--mid { margin-top: 0; }
+    .contact-panel { width: min(100%, 560px); }
+    .contact-panel h3 { max-width: none; }
+    .specials-layout { grid-template-columns: 1fr; }
+    .specials-stack { max-width: 420px; }
+    .menu-grid, .story-grid { grid-template-columns: 1fr 1fr; }
+    .cat-grid { grid-template-columns: 1fr 1fr; padding-bottom: 1rem; }
+    .cat-card:nth-child(1),
+    .cat-card:nth-child(2) { margin-top: 0; }
+    .cat-card:nth-child(3),
+    .cat-card:nth-child(4) { margin-top: 1.25rem; }
+    .cat-card { min-height: 0; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-brand { min-height: 0; }
+    .footer-wordmark { padding-top: 1.25rem; font-size: clamp(3.5rem, 18vw, 6rem); }
+    .footer-strip { grid-template-columns: repeat(5, 1fr); }
+    .footer-strip figure { aspect-ratio: 3 / 4.2; }
+    .blog-card { grid-template-columns: 1fr; }
+    .blog-card img, .blog-card .img-wrap { min-height: 200px; height: 200px; }
+    .signature-sticky { min-height: auto; padding-top: 5.5rem; padding-bottom: 1rem; }
+    .signature-title-wrap { padding: 2.5rem 0 3rem; }
+    .signature-gallery { margin-top: 0; }
+    .sig-row figure { width: min(42vw, 280px); }
+    .sig-row--in { padding-inline: 0.75rem; }
+  }
+  @media (max-width: 640px) {
+    .container { width: min(1240px, calc(100% - 1.5rem)); }
+    .nav { padding: 0 .85rem; height: 64px; }
+    .nav-cta span { display: none; }
+    .nav-cta { padding: 10px 14px; }
+    .hero-inner { padding: 100px 1.25rem 3rem; justify-content: flex-end; }
+    .hero-float-card { display: none; }
+    .hero-meta { flex-direction: column; align-items: flex-start; }
+    .menu-grid, .cat-grid, .story-grid { grid-template-columns: 1fr; }
+    .footer-links { grid-template-columns: 1fr 1fr; }
+    .footer-strip { grid-template-columns: repeat(3, 1fr); }
+    .footer-strip figure:nth-child(4),
+    .footer-strip figure:nth-child(5) { display: none; }
+    .footer-main { width: min(1240px, calc(100% - 1.5rem)); }
+    .contact-cols { grid-template-columns: 1fr; }
+    .contact-strip { min-height: 0; padding: 3rem 0; }
+    .contact-panel { width: 100%; border-radius: 1.2rem; }
+    .about-lead { max-width: none; }
+    .specials-head { justify-content: center; text-align: center; gap: .75rem 1.25rem; }
+    .specials-list button { font-size: 1.25rem; }
+    .cat-card:nth-child(n) { margin-top: 0; }
+    .categories .section-head { max-width: none; }
+    section { padding: 4.25rem 0; }
+    .signature-top { flex-direction: column; align-items: flex-start; }
+    .signature-tabs { justify-content: start; }
+    .signature-title-wrap { padding-bottom: 2rem; }
+    .signature-gallery { margin-top: 0; }
+    .signature h2 { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+    .sig-row { gap: .65rem; }
+    .sig-row figure { width: calc(50% - .35rem); border-radius: 10px; }
+    .sig-row--in { padding-inline: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .hero-bg, .contact-strip-bg, .hero-content { transform: none !important; }
+    .signature-sticky { position: relative; min-height: auto; }
+    .signature-gallery { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="nav-brand" href="#top">
+    <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/a23ed563-bd2b-47a2-aa1d-c05a316fe537/logo-full.png" alt="Hawratt logo" />
+    <span>HAWRATT</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#top">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#menu">Menu</a>
+    <a href="#story">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <a class="nav-cta" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">&rarr;</span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="drawer" hidden>
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <span class="brand">HAWRATT</span>
+      <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">&times;</button>
+    </div>
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#menu">Menu</a>
+      <a href="#story">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="drawer-cta" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table &rarr;</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" data-parallax="0.35" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-content" data-parallax="0.1" data-parallax-fade="1">
+      <p class="hero-eyebrow">à¤–à¤¾ à¤°à¥‡ à¤¹à¤µà¤°à¤Ÿà¥à¤Ÿ</p>
+      <h1>Where Home<br />Meets Hunger</h1>
+      <div class="hero-meta">
+        <div class="hero-proof" aria-hidden="true">
+          <div class="hero-avatars">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="hero-badge">10+</span>
+        </div>
+        <p>We turn every meal into a memorable experience. From mouth-watering thalis crafted every time.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#menu">Explore Menu <span aria-hidden="true">â†’</span></a>
+      </div>
+    </div>
+  </div>
+  <a class="hero-float-card" href="#signature" data-parallax="-0.18" aria-label="Experience our signature dishes">
+    <div class="hero-float-stack" aria-hidden="true"></div>
+    <div class="hero-float-inner">
+      <div class="hero-float-top">
+        <p>Experience Our Signature Dishes</p>
+        <span class="arr" aria-hidden="true">
+          <svg width="20" height="15" viewBox="0 0 20 15" fill="none"><path d="M1 7.5h16M12 1.5l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+      <div class="hero-float-img">
+        <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/4d6db942-85d5-4728-83e6-3293fe3d1e05/hawratt-food-1.jpg" alt="Signature thali at Hawratt" />
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Choose favourite dishes</span>
+    <span>Discover all menu</span>
+    <span>Order your thali</span>
+    <span>Kha Re Hawratt</span>
+    <span>Choose favourite dishes</span>
+    <span>Discover all menu</span>
+    <span>Order your thali</span>
+    <span>Kha Re Hawratt</span>
+  </div>
+</div>
+
+<!-- ABOUT â€” Dinevo-style centered More About Us -->
+<section class="about" id="about">
+  <div class="about-inner reveal">
+    <span class="about-eyebrow">à¤œà¥‡à¤µà¤£à¤¾à¤šà¥€ à¤•à¤²à¤¾</span>
+    <p class="about-lead">
+      Hawratt was born from a love of honest food and genuine hospitality. Our kitchen blends traditional Khanavaal techniques with Goan warmth to craft dishes that excite the senses and warm the heart.
+      <span class="muted"> Every ingredient is carefully chosen.</span>
+    </p>
+    <a class="btn-primary" href="#specials">More About Us <span aria-hidden="true">â†’</span></a>
+  </div>
+</section>
+
+<!-- SPECIALS â€” list + fanned stock images -->
+<section class="specials-section" id="specials">
+  <div class="container">
+    <div class="specials-head reveal">
+      <span>(Hawrattâ€™s Special)</span>
+      <span class="accent">à¤®à¤Ÿà¤¨ à¤°à¤¸à¥à¤¸à¤¾</span>
+      <span>(2024â€“2025)</span>
+    </div>
+    <div class="specials-layout">
+      <div class="specials-list reveal from-left" id="specialsList">
+        <button type="button" class="is-active" data-special="0"><span class="num">1.</span> Mutton Kheema Pav</button>
+        <button type="button" data-special="1"><span class="num">2.</span> Chicken / Mutton Thali</button>
+        <button type="button" data-special="2"><span class="num">3.</span> Misal Pav &amp; Vada Pav</button>
+        <button type="button" data-special="3"><span class="num">4.</span> Solkadhi &amp; Thecha</button>
+      </div>
+      <div class="specials-stack reveal from-right" style="--d:120ms" id="specialsStack" aria-hidden="true">
+        <figure class="is-front"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/90e012f5-98e7-4cad-8c90-747f5c7e8b1a/sig-3.jpg" alt="Mutton kheema pav" /></figure>
+        <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/755e8ac5-725a-484e-9620-f0bb0789a5d0/sig-1.jpg" alt="Maharashtrian thali" /></figure>
+        <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f7e7f139-7508-4c3b-b899-6a709fc1befa/sig-4.jpg" alt="Misal pav and street snacks" /></figure>
+        <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f59bf28c-7260-4f96-b97d-f35acc420df6/sig-2.jpg" alt="Solkadhi and sides" /></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-label">{Our Menu}</span>
+        <h2 class="section-title">Discover the art<br/>of taste</h2>
+      </div>
+      <a class="btn-ghost" href="https://wa.me/918879270970" target="_blank" rel="noopener">View all menu â†’</a>
+    </div>
+
+    <div class="menu-grid">
+      <article class="menu-card reveal from-scale" style="--d:0ms" tabindex="0">
+        <div class="menu-card-base">
+          <div class="menu-img"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/90e012f5-98e7-4cad-8c90-747f5c7e8b1a/sig-3.jpg" alt="Chicken Thali" loading="lazy" /></div>
+          <h3>Chicken Thali</h3>
+          <span class="price">â‚¹250</span>
+        </div>
+        <div class="menu-card-popup">
+          <h3>Chicken Thali</h3>
+          <p>Rassa, bhakri or chapati, rice, solkadhi &amp; homestyle sides.</p>
+          <div class="popup-thumb"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/90e012f5-98e7-4cad-8c90-747f5c7e8b1a/sig-3.jpg" alt="" loading="lazy" /></div>
+          <span class="price">â‚¹250</span>
+          <a class="book-link" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">â†’</span></a>
+          <div class="stars"><span class="star-row" aria-hidden="true">â˜…â˜…â˜…â˜…â˜…</span><span>4.8 Stars (40 reviews)</span></div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal from-scale" style="--d:80ms" tabindex="0">
+        <div class="menu-card-base">
+          <div class="menu-img"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/755e8ac5-725a-484e-9620-f0bb0789a5d0/sig-1.jpg" alt="Mutton Thali" loading="lazy" /></div>
+          <h3>Mutton Thali</h3>
+          <span class="price">â‚¹400</span>
+        </div>
+        <div class="menu-card-popup">
+          <h3>Mutton Thali</h3>
+          <p>Bold mutton rassa, unlimited bhaat, thecha that hits &amp; cool solkadhi.</p>
+          <div class="popup-thumb"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/755e8ac5-725a-484e-9620-f0bb0789a5d0/sig-1.jpg" alt="" loading="lazy" /></div>
+          <span class="price">â‚¹400</span>
+          <a class="book-link" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">â†’</span></a>
+          <div class="stars"><span class="star-row" aria-hidden="true">â˜…â˜…â˜…â˜…â˜…</span><span>4.9 Stars (52 reviews)</span></div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal from-scale" style="--d:160ms" tabindex="0">
+        <div class="menu-card-base">
+          <div class="menu-img"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f59bf28c-7260-4f96-b97d-f35acc420df6/sig-2.jpg" alt="Veg Thali" loading="lazy" /></div>
+          <h3>Veg Thali</h3>
+          <span class="price">â‚¹180</span>
+        </div>
+        <div class="menu-card-popup">
+          <h3>Veg Thali</h3>
+          <p>Daily veg gravy, dry sabzi, chapati / bhakri, rice &amp; solkadhi.</p>
+          <div class="popup-thumb"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f59bf28c-7260-4f96-b97d-f35acc420df6/sig-2.jpg" alt="" loading="lazy" /></div>
+          <span class="price">â‚¹180</span>
+          <a class="book-link" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">â†’</span></a>
+          <div class="stars"><span class="star-row" aria-hidden="true">â˜…â˜…â˜…â˜…â˜…</span><span>4.7 Stars (36 reviews)</span></div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal from-scale" style="--d:240ms" tabindex="0">
+        <div class="menu-card-base">
+          <div class="menu-img"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f7e7f139-7508-4c3b-b899-6a709fc1befa/sig-4.jpg" alt="Misal Pav" loading="lazy" /></div>
+          <h3>Misal Pav</h3>
+          <span class="price">â‚¹120</span>
+        </div>
+        <div class="menu-card-popup">
+          <h3>Misal Pav</h3>
+          <p>Spicy tarri, crunchy farsan, pav â€” veg or chicken misal.</p>
+          <div class="popup-thumb"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f7e7f139-7508-4c3b-b899-6a709fc1befa/sig-4.jpg" alt="" loading="lazy" /></div>
+          <span class="price">â‚¹120</span>
+          <a class="book-link" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">â†’</span></a>
+          <div class="stars"><span class="star-row" aria-hidden="true">â˜…â˜…â˜…â˜…â˜…</span><span>4.8 Stars (48 reviews)</span></div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal from-scale" style="--d:320ms" tabindex="0">
+        <div class="menu-card-base">
+          <div class="menu-img"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/6aebf5b8-9db6-41e6-ad5d-f987d18af903/sig-7.jpg" alt="Vada Pav" loading="lazy" /></div>
+          <h3>Vada Pav</h3>
+          <span class="price">â‚¹40</span>
+        </div>
+        <div class="menu-card-popup">
+          <h3>Vada Pav</h3>
+          <p>Large flavourful vada with mirchi, green chutney &amp; thecha pav.</p>
+          <div class="popup-thumb"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/6aebf5b8-9db6-41e6-ad5d-f987d18af903/sig-7.jpg" alt="" loading="lazy" /></div>
+          <span class="price">â‚¹40</span>
+          <a class="book-link" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">â†’</span></a>
+          <div class="stars"><span class="star-row" aria-hidden="true">â˜…â˜…â˜…â˜…â˜…</span><span>4.8 Stars (61 reviews)</span></div>
+        </div>
+      </article>
+
+      <article class="menu-card reveal from-scale" style="--d:400ms" tabindex="0">
+        <div class="menu-card-base">
+          <div class="menu-img"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/3058703a-13d5-4f1d-a9d9-42d3a036fd54/sig-5.jpg" alt="Solkadhi" loading="lazy" /></div>
+          <h3>Solkadhi</h3>
+          <span class="price">â‚¹60</span>
+        </div>
+        <div class="menu-card-popup">
+          <h3>Solkadhi</h3>
+          <p>Kokum &amp; coconut milk â€” the cool finish every meal needs.</p>
+          <div class="popup-thumb"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/3058703a-13d5-4f1d-a9d9-42d3a036fd54/sig-5.jpg" alt="" loading="lazy" /></div>
+          <span class="price">â‚¹60</span>
+          <a class="book-link" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table <span aria-hidden="true">â†’</span></a>
+          <div class="stars"><span class="star-row" aria-hidden="true">â˜…â˜…â˜…â˜…â˜…</span><span>5.0 Stars (44 reviews)</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO BLEED -->
+<section class="video-bleed" id="kitchen-video" aria-label="Behind the kitchen">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/57b01914-0c2b-4389-b181-929803ec8375/video-poster.jpg"
+  >
+    <source src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/7aa75f14-d70a-4645-ac8b-893a466e2dbe/kitchen-video.mp4" type="video/mp4" />
+  </video>
+  <div class="video-bleed-edge" aria-hidden="true">
+    <!-- Cream torn-edge bleed matching Dinevo reference -->
+    <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/b2d21535-9c02-4c94-944a-496e4f1f3ec8/video-bleed-cream.png" alt="" />
+  </div>
+</section>
+
+<!-- CATEGORIES â€” A Taste of Our Kitchen -->
+<section class="categories" id="kitchen">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title"><span class="title-line">A symphony of tradition</span><span class="title-line">and modern taste.</span></h2>
+    </div>
+    <div class="cat-grid">
+      <article class="cat-card reveal" style="--d:0ms">
+        <h3>Breakfast</h3>
+        <div class="num">01/04</div>
+        <div class="thumb">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/3f38c7a3-c38c-4b07-8201-326420d17951/cat-breakfast.jpg" alt="Breakfast spread" loading="lazy" />
+        </div>
+        <p>Kanda pohe, tarri pohe, amboli, ghavan &amp; upma â€” mornings done the Khanavaal way.</p>
+        <a class="cat-link" href="#menu">Explore all menu</a>
+      </article>
+      <article class="cat-card reveal" style="--d:80ms">
+        <h3>Main Dishes</h3>
+        <div class="num">02/04</div>
+        <div class="thumb">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/63817f69-f557-464f-a947-da2414cbd38d/hawratt-food-2.jpg" alt="Hawratt thali and main dishes" loading="lazy" />
+        </div>
+        <p>Veg, chicken &amp; mutton thalis with jowar bhakari, rassa, and unlimited bhaat.</p>
+        <a class="cat-link" href="#menu">Explore all menu</a>
+      </article>
+      <article class="cat-card reveal" style="--d:160ms">
+        <h3>Drinks</h3>
+        <div class="num">03/04</div>
+        <div class="thumb">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/e4eefff3-b27c-4041-82cb-af445567901f/cat-drinks.jpg" alt="Coolers and drinks" loading="lazy" />
+        </div>
+        <p>Solkadhi, fresh urrack &amp; coolers to balance the heat of the spice and rassa.</p>
+        <a class="cat-link" href="#menu">Explore all menu</a>
+      </article>
+      <article class="cat-card reveal" style="--d:240ms">
+        <h3>Snacks</h3>
+        <div class="num">04/04</div>
+        <div class="thumb">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f7e7f139-7508-4c3b-b899-6a709fc1befa/sig-4.jpg" alt="Pav and street snacks" loading="lazy" />
+        </div>
+        <p>Vada pav, misal, kothimbir wadi, kanda bhaji &amp; more â€” bites worth sharing.</p>
+        <a class="cat-link" href="#menu">Explore all menu</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<section class="signature" id="signature">
+  <div class="signature-sticky">
+    <div class="signature-top">
+      <span class="section-label">{ Signature Dish }</span>
+      <div class="signature-tabs" id="sigTabs">
+        <button class="active" type="button" data-panel="0">Mutton Thali</button>
+        <button type="button" data-panel="1">Kheema Pav</button>
+        <button type="button" data-panel="2">Misal Pav</button>
+        <button type="button" data-panel="3">Fish Fry</button>
+      </div>
+    </div>
+    <div class="signature-title-wrap">
+      <h2 id="sigTitle">Discover Our<br/>Signature Creations</h2>
+      <p class="signature-sub" id="sigSub">Mutton Rassa Thali — the Khanavaal classic.</p>
+    </div>
+  </div>
+  <div class="signature-gallery" id="sigGallery">
+    <div class="sig-row sig-row--out is-active" data-panel="0">
+      <figure class="reveal from-left"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/755e8ac5-725a-484e-9620-f0bb0789a5d0/sig-1.jpg" alt="Indian curry thali with rice and breads" loading="lazy" /></figure>
+      <figure class="reveal from-right"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f59bf28c-7260-4f96-b97d-f35acc420df6/sig-2.jpg" alt="Spiced Indian curry bowls" loading="lazy" /></figure>
+    </div>
+    <div class="sig-row sig-row--in is-active" data-panel="1">
+      <figure class="reveal from-left"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/90e012f5-98e7-4cad-8c90-747f5c7e8b1a/sig-3.jpg" alt="Butter chicken and naan" loading="lazy" /></figure>
+      <figure class="reveal from-right"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f7e7f139-7508-4c3b-b899-6a709fc1befa/sig-4.jpg" alt="Street-style pav and snacks" loading="lazy" /></figure>
+    </div>
+    <div class="sig-row sig-row--out is-active" data-panel="2">
+      <figure class="reveal from-left"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/3058703a-13d5-4f1d-a9d9-42d3a036fd54/sig-5.jpg" alt="Gourmet plated dish" loading="lazy" /></figure>
+      <figure class="reveal from-right"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/e786a070-7e00-43c6-9f6f-325be51a5ebf/sig-6.jpg" alt="Restaurant dining atmosphere" loading="lazy" /></figure>
+    </div>
+    <div class="sig-row sig-row--in is-active" data-panel="3">
+      <figure class="reveal from-left"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/6aebf5b8-9db6-41e6-ad5d-f987d18af903/sig-7.jpg" alt="Grilled meats and sides" loading="lazy" /></figure>
+      <figure class="reveal from-right"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/89bd6eae-d523-4c7a-b736-2742330dd503/sig-8.jpg" alt="Fine dining table spread" loading="lazy" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / GALLERY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-label">{Hawrattâ€™s Story}</span>
+        <h2 class="section-title">A glimpse into<br/>Hawrattâ€™s</h2>
+      </div>
+      <p>Our tables showcase more than food â€” craftsmanship, community, and the joy of flavours that feel like home.</p>
+    </div>
+    <div class="story-grid">
+      <article class="story-card reveal from-left" style="--d:0ms">
+        <div class="img-wrap"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/63817f69-f557-464f-a947-da2414cbd38d/hawratt-food-2.jpg" alt="Hawratt thali spread" /></div>
+        <div class="body">
+          <h3>The craft and creativity that define Hawratt</h3>
+          <div class="story-meta"><span>â™¡ Love</span><span>From the kitchen</span></div>
+        </div>
+      </article>
+      <article class="story-card reveal from-scale" style="--d:120ms">
+        <div class="img-wrap"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/2128a0b7-1176-4a93-ad53-0be36f9ed623/hawratt-dish-1.jpg" alt="Dining at Hawratt" /></div>
+        <div class="body">
+          <h3>Passion, precision &amp; the art of Khanavaal cuisine</h3>
+          <div class="story-meta"><span>â™¡ Love</span><span>Daily specials</span></div>
+        </div>
+      </article>
+      <article class="story-card reveal from-right" style="--d:240ms">
+        <div class="img-wrap"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/94c89934-fbc9-4514-b7fe-7020d3de88fe/hawratt-thali-1.jpg" alt="Guests at Hawratt" /></div>
+        <div class="body">
+          <h3>Where culinary art truly meets heart at Hawratt</h3>
+          <div class="story-meta"><span>â™¡ Love</span><span>Siolim vibes</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-strip" id="contact">
+  <div class="contact-strip-bg" data-parallax="0.25" aria-hidden="true"></div>
+  <div class="container">
+    <div class="contact-panel reveal from-scale">
+      <span class="section-label">{Get in Touch}</span>
+      <h3>Flavours that bring joy to every bite</h3>
+      <p class="contact-lead">Our dishes are made fresh every day â€” no ajinomoto, no artificial colours, only sunflower oil &amp; lots of love.</p>
+      <div class="contact-cols">
+        <div class="contact-box">
+          <h4>Find us</h4>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/FYnC35qdiC2SuFJu5" target="_blank" rel="noopener">Tar Road, Siolim, Goa</a>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="tel:+918454061021">84540 61021</a>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:refuelhospitalityservices@gmail.com">refuelhospitalityservices@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-box">
+          <h4>Opening hours</h4>
+          <div class="contact-row"><span>Thu: CLOSED</span></div>
+          <div class="contact-row"><span>Sunâ€“Wed: 10 AM â€“ 11 PM</span></div>
+          <div class="contact-row"><span>Friâ€“Sat: 10 AM â€“ 11 PM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-label">{Our Testimonials}</span>
+        <h2 class="section-title">Discover the art<br/>of taste</h2>
+      </div>
+      <a class="btn-primary" href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a Table â†’</a>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-col reveal" style="--d:0ms">
+        <article class="review-quote">
+          <div class="qmark" aria-hidden="true">â€œ</div>
+          <div class="stars" aria-label="5 stars">â˜…â˜…â˜…â˜…â˜…</div>
+          <p>The flavours at Hawratt are simply unforgettable! Every dish feels like a journey through authentic Maharashtrian taste.</p>
+        </article>
+        <div class="review-who">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/27922360-ca8e-4e44-a78a-58939cb7198a/logo-profile.jpg" alt="" loading="lazy" />
+          <div>
+            <strong>Subodh Kolte</strong>
+            <span>Food lover Â· Zomato</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-col review-col--mid reveal" style="--d:100ms">
+        <div class="review-who">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/94c89934-fbc9-4514-b7fe-7020d3de88fe/hawratt-thali-1.jpg" alt="" loading="lazy" />
+          <div>
+            <strong>Anastasio Mendes</strong>
+            <span>Local guest Â· Google</span>
+          </div>
+        </div>
+        <article class="review-quote review-quote--flip">
+          <div class="stars" aria-label="5 stars">â˜…â˜…â˜…â˜…â˜…</div>
+          <p>The kitchen at Hawratt truly knows how to balance authentic flavour with warmth, spice, and that home-style Khanavaal feel.</p>
+          <div class="qmark" aria-hidden="true">â€œ</div>
+        </article>
+      </div>
+
+      <div class="review-col reveal" style="--d:200ms">
+        <article class="review-quote">
+          <div class="qmark" aria-hidden="true">â€œ</div>
+          <div class="stars" aria-label="5 stars">â˜…â˜…â˜…â˜…â˜…</div>
+          <p>From warm hospitality to honest thalis, Hawratt made our evening in Siolim truly memorable â€” locals and travellers alike.</p>
+        </article>
+        <div class="review-who">
+          <img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/4d6db942-85d5-4728-83e6-3293fe3d1e05/hawratt-food-1.jpg" alt="" loading="lazy" />
+          <div>
+            <strong>Riya Sharma</strong>
+            <span>Guest Â· Siolim</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS / CATERING -->
+<section class="events" id="events">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-label">{Our Locations}</span>
+        <h2 class="section-title">Celebrate every moment<br/>with Hawratt</h2>
+      </div>
+    </div>
+    <div class="events-grid">
+      <article class="event-card reveal from-left" style="--d:0ms">
+        <div class="bg" style="background-image:url('https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/d6adbf5f-49c2-4285-bd07-4b3922f57ea2/hawratt-promo-meals.jpg')" data-parallax-bg="0.18"></div>
+        <div class="shade"></div>
+        <div class="info">
+          <h3>Group meals &amp; packed thalis</h3>
+          <p>Offices, villas, film shoots, retreats â€” from 10 people.</p>
+          <a class="btn-ghost" href="https://wa.me/918879270970" target="_blank" rel="noopener">Enquire â†’</a>
+        </div>
+      </article>
+      <article class="event-card reveal from-right" style="--d:120ms">
+        <div class="bg" style="background-image:url('https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/4d6db942-85d5-4728-83e6-3293fe3d1e05/hawratt-food-1.jpg')" data-parallax-bg="0.18"></div>
+        <div class="shade"></div>
+        <div class="info">
+          <h3>Dine-in at Siolim Khanavaal</h3>
+          <p>Tar Road, Siolim, Goa â€” river-side North Goa vibes.</p>
+          <a class="btn-ghost" href="https://maps.app.goo.gl/FYnC35qdiC2SuFJu5" target="_blank" rel="noopener">Location â†’</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / STORIES -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-label">{Our Blog}</span>
+        <h2 class="section-title">Our latest stories.</h2>
+      </div>
+      <p>Step behind the scenes at Hawratt â€” recipes, rassa, and the joy of Maharashtrian food in Goa.</p>
+    </div>
+    <div class="blog-grid">
+      <a class="blog-card reveal from-left" style="--d:0ms" href="https://www.instagram.com/hawrattgoa/" target="_blank" rel="noopener">
+        <div class="img-wrap"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/76f4c3fd-4334-40d9-8e06-4078517bb5e6/hawratt-promo-poster.jpg" alt="Hawratt everyday" /></div>
+        <div class="body">
+          <div class="meta">(Khanavaal) Â· Open daily</div>
+          <h3>Authentic taste, now every day in Goa â€” Kha Re Hawratt</h3>
+        </div>
+      </a>
+      <a class="blog-card reveal from-right" style="--d:120ms" href="https://www.instagram.com/hawrattgoa/" target="_blank" rel="noopener">
+        <div class="img-wrap"><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/2128a0b7-1176-4a93-ad53-0be36f9ed623/hawratt-dish-1.jpg" alt="Behind the scenes at Hawratt" /></div>
+        <div class="body">
+          <div class="meta">(Kitchen) Â· Fresh daily</div>
+          <h3>Behind the scenes: rassa, bhakri &amp; the busy Khanavaal routine</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-strip" aria-hidden="true">
+    <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/f7e7f139-7508-4c3b-b899-6a709fc1befa/sig-4.jpg" alt="" loading="lazy" /></figure>
+    <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/63817f69-f557-464f-a947-da2414cbd38d/hawratt-food-2.jpg" alt="" loading="lazy" /></figure>
+    <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/755e8ac5-725a-484e-9620-f0bb0789a5d0/sig-1.jpg" alt="" loading="lazy" /></figure>
+    <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/3058703a-13d5-4f1d-a9d9-42d3a036fd54/sig-5.jpg" alt="" loading="lazy" /></figure>
+    <figure><img src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/90e012f5-98e7-4cad-8c90-747f5c7e8b1a/sig-3.jpg" alt="" loading="lazy" /></figure>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-cta">Sign up for updates, offers, and delicious surprises</p>
+        <div class="footer-wordmark" aria-label="Hawratt">Hawratt</div>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-newsletter">
+          <h4>Newsletter</h4>
+          <form class="newsletter" id="newsletter" onsubmit="return handleNewsletter(event)">
+            <input type="email" name="email" placeholder="Enter your email" required aria-label="Email" />
+            <button type="submit" aria-label="Subscribe">â†’</button>
+          </form>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Pages</h4>
+            <a href="#top">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Visit</h4>
+            <a href="#story">Gallery</a>
+            <a href="#signature">Signature</a>
+            <a href="#events">Catering</a>
+            <a href="#reviews">Reviews</a>
+            <a href="https://wa.me/918879270970" target="_blank" rel="noopener">Book a table</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow us</h4>
+            <a class="ext" href="https://www.instagram.com/hawrattgoa/" target="_blank" rel="noopener">Instagram</a>
+            <a class="ext" href="https://maps.app.goo.gl/FYnC35qdiC2SuFJu5" target="_blank" rel="noopener">Google Maps</a>
+            <a class="ext" href="https://www.hawratt.com/" target="_blank" rel="noopener">Website</a>
+            <a class="ext" href="https://wa.me/918879270970" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Â© <span id="year"></span> Hawratt Khanavaal Â· By Refuel Hospitality Services</span>
+      <span>Kha Re Hawratt. Stay Hawratt.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.getElementById('nav');
+  const drawer = document.getElementById('drawer');
+  const menuToggle = document.getElementById('menuToggle');
+
+  const openDrawer = () => {
+    drawer.hidden = false;
+    requestAnimationFrame(() => {
+      drawer.classList.add('open');
+      menuToggle.classList.add('is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('nav-open');
+    });
+  };
+  const closeDrawer = () => {
+    drawer.classList.remove('open');
+    menuToggle.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+    window.setTimeout(() => {
+      if (!drawer.classList.contains('open')) drawer.hidden = true;
+    }, 320);
+  };
+
+  menuToggle.addEventListener('click', () => {
+    if (drawer.classList.contains('open')) closeDrawer();
+    else openDrawer();
+  });
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) closeDrawer(); });
+  drawer.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeDrawer));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  // Specials â€” bring matching stock image to front
+  const specialBtns = document.querySelectorAll('#specialsList button');
+  const specialFigs = document.querySelectorAll('#specialsStack figure');
+  const setSpecial = (i) => {
+    specialBtns.forEach((b, idx) => b.classList.toggle('is-active', idx === i));
+    specialFigs.forEach((f, idx) => f.classList.toggle('is-front', idx === i));
+  };
+  specialBtns.forEach((btn, i) => {
+    btn.addEventListener('mouseenter', () => setSpecial(i));
+    btn.addEventListener('focus', () => setSpecial(i));
+    btn.addEventListener('click', () => setSpecial(i));
+  });
+
+  // Signature — sticky title + tabs sync to gallery row on scroll
+  const tabs = Array.from(document.querySelectorAll('#sigTabs button'));
+  const sigTitle = document.getElementById('sigTitle');
+  const sigSub = document.getElementById('sigSub');
+  const sigRows = Array.from(document.querySelectorAll('#sigGallery .sig-row'));
+  const sigSection = document.getElementById('signature');
+  const SIG_PANELS = [
+    { title: 'Discover Our<br/>Signature Creations', sub: 'Mutton Rassa Thali — the Khanavaal classic.' },
+    { title: "Chef's Choice", sub: 'Mutton kheema pav — spicy, flavourful, unforgettable.' },
+    { title: 'The House Special', sub: 'Misal pav with tarri that wakes you up.' },
+    { title: 'Culinary Highlight', sub: 'Mandeli fry &amp; coastal seafood, Maharashtrian style.' }
+  ];
+  let sigPanel = -1;
+  let sigLockUntil = 0;
+  let sigTitleTimer = 0;
+
+  const applySigPanel = (panel, animate) => {
+    if (panel === sigPanel || panel < 0 || panel >= SIG_PANELS.length) return;
+    sigPanel = panel;
+    tabs.forEach((b, i) => b.classList.toggle('active', i === panel));
+    sigRows.forEach((row, i) => {
+      const on = i === panel;
+      row.classList.toggle('is-active', on);
+      row.classList.toggle('is-dim', !on);
+    });
+    const data = SIG_PANELS[panel];
+    const swap = () => {
+      sigTitle.innerHTML = data.title;
+      sigSub.innerHTML = data.sub;
+      sigTitle.style.opacity = '1';
+      sigTitle.style.transform = 'translateY(0)';
+      sigSub.style.opacity = '1';
+      sigSub.style.transform = 'translateY(0)';
+    };
+    window.clearTimeout(sigTitleTimer);
+    if (animate && !reduceMotion) {
+      sigTitle.style.opacity = '0';
+      sigTitle.style.transform = 'translateY(18px)';
+      sigSub.style.opacity = '0';
+      sigSub.style.transform = 'translateY(12px)';
+      sigTitleTimer = window.setTimeout(swap, 160);
+    } else {
+      swap();
+    }
+  };
+
+  // Scrollspy: last gallery row whose top has crossed under the sticky title
+  const sigSpyLine = () => window.innerHeight * 0.48;
+
+  const syncSigFromScroll = () => {
+    if (Date.now() < sigLockUntil) return;
+    if (!sigSection) return;
+    const sec = sigSection.getBoundingClientRect();
+    if (sec.bottom < 60 || sec.top > window.innerHeight - 60) return;
+
+    const line = sigSpyLine();
+    let active = 0;
+    for (let i = 0; i < sigRows.length; i++) {
+      if (sigRows[i].getBoundingClientRect().top <= line) active = i;
+    }
+    applySigPanel(active, true);
+  };
+
+  applySigPanel(0, false);
+
+  tabs.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const panel = parseInt(btn.dataset.panel, 10);
+      applySigPanel(panel, true);
+      const target = sigRows[panel];
+      if (target) {
+        sigLockUntil = Date.now() + 900;
+        const y = target.getBoundingClientRect().top + window.scrollY - sigSpyLine() + 12;
+        const html = document.documentElement;
+        const prev = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo(0, Math.max(0, y));
+        html.style.scrollBehavior = prev;
+      }
+    });
+  });
+
+  /* ---------- Scroll in / out (Dinevo-style appear) ---------- */
+  const reveals = Array.from(document.querySelectorAll('.reveal'));
+  if (!reduceMotion) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add('visible');
+          el.classList.remove('out-up', 'out-down');
+        } else {
+          el.classList.remove('visible');
+          // Scroll out direction based on where element went
+          if (entry.boundingClientRect.top < 0) {
+            el.classList.add('out-up');
+            el.classList.remove('out-down');
+          } else {
+            el.classList.add('out-down');
+            el.classList.remove('out-up');
+          }
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('visible'));
+  }
+
+  /* ---------- Parallax engine ---------- */
+  const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+  const parallaxImgs = Array.from(document.querySelectorAll('[data-parallax-img]'));
+  const parallaxBgs = Array.from(document.querySelectorAll('[data-parallax-bg]'));
+  const marqueeTrack = document.querySelector('.marquee-track');
+  let ticking = false;
+
+  function updateParallax() {
+    const y = window.scrollY || window.pageYOffset;
+    const vh = window.innerHeight;
+
+    nav.classList.toggle('scrolled', y > 40);
+
+    if (!reduceMotion) {
+      parallaxEls.forEach((el) => {
+        const speed = parseFloat(el.dataset.parallax) || 0.2;
+        const fade = el.dataset.parallaxFade === '1';
+        const isHeroLayer =
+          el.classList.contains('hero-bg') ||
+          el.classList.contains('hero-content') ||
+          el.classList.contains('hero-float-card');
+        let offset;
+        if (isHeroLayer) {
+          offset = y * speed;
+        } else {
+          // Section-relative parallax (keeps lower sections like contact in view)
+          const rect = el.parentElement
+            ? el.parentElement.getBoundingClientRect()
+            : el.getBoundingClientRect();
+          const mid = rect.top + rect.height / 2 - vh / 2;
+          offset = mid * speed * -1;
+        }
+        let transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+        if (el.classList.contains('hero-bg') || el.classList.contains('contact-strip-bg')) {
+          transform = `translate3d(0, ${offset.toFixed(2)}px, 0) scale(1.08)`;
+        }
+        el.style.transform = transform;
+        if (fade) {
+          const progress = Math.min(Math.max(y / (vh * 0.85), 0), 1);
+          el.style.opacity = String(1 - progress * 0.85);
+        }
+      });
+
+      parallaxImgs.forEach((img) => {
+        const speed = parseFloat(img.dataset.parallaxImg) || 0.15;
+        const wrap = img.parentElement;
+        if (!wrap) return;
+        const rect = wrap.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2 - vh / 2;
+        img.style.transform = `translate3d(0, ${mid * speed * -1}px, 0) scale(1.08)`;
+      });
+
+      parallaxBgs.forEach((bg) => {
+        const speed = parseFloat(bg.dataset.parallaxBg) || 0.12;
+        const card = bg.parentElement;
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const mid = rect.top + rect.height / 2 - vh / 2;
+        bg.style.setProperty('--py', `${(mid * speed * -1).toFixed(2)}px`);
+      });
+    }
+
+    syncSigFromScroll();
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  updateParallax();
+
+  // Keep menu hover cards open while interacting with Book a Table
+  document.querySelectorAll('.menu-card').forEach((card) => {
+    let leaveTimer;
+    const open = () => {
+      clearTimeout(leaveTimer);
+      card.classList.add('is-open');
+    };
+    const close = () => {
+      leaveTimer = setTimeout(() => card.classList.remove('is-open'), 120);
+    };
+    card.addEventListener('mouseenter', open);
+    card.addEventListener('mouseleave', close);
+    card.addEventListener('focusin', open);
+    card.addEventListener('focusout', (e) => {
+      if (!card.contains(e.relatedTarget)) close();
+    });
+  });
+
+  // Magnetic tilt on story + kitchen category cards
+  if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.story-card, .cat-card').forEach((card) => {
+      card.style.transformStyle = 'preserve-3d';
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        const lift = card.classList.contains('cat-card') ? 8 : 10;
+        const rx = card.classList.contains('cat-card') ? 7 : 5;
+        const ry = card.classList.contains('cat-card') ? 9 : 6;
+        card.classList.add('is-tilting');
+        card.style.transform = `translateY(-${lift}px) rotateX(${(-y * rx).toFixed(2)}deg) rotateY(${(x * ry).toFixed(2)}deg)`;
+      });
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('is-tilting');
+        card.style.transform = '';
+      });
+    });
+  }
+
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const email = e.target.email.value.trim();
+    if (!email) return false;
+    alert('Thanks! We\'ll keep you posted on Hawratt specials.');
+    e.target.reset();
+    return false;
+  }
+</script>
+</body>
+</html>
