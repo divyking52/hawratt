@@ -7,6 +7,7 @@
 <meta name="description" content="Hawratt Khanavaal &mdash; authentic Maharashtrian home-style food in Siolim, Goa. Thalis, misal, vada pav, solkadhi. Kha Re Hawratt." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="image" href="assets/hero.webp" type="image/webp" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -49,12 +50,11 @@
     display: flex; align-items: center; justify-content: space-between;
     height: 104px; padding: 0 clamp(1.25rem, 4vw, 5rem);
     color: #fff;
-    transition: background .35s ease, backdrop-filter .35s ease, border-color .35s ease, height .3s;
+    transition: background .35s ease, border-color .35s ease, height .3s;
     border-bottom: 1px solid transparent;
   }
   .nav.scrolled {
-    background: rgba(0,0,0,0.92);
-    backdrop-filter: blur(16px);
+    background: rgba(0,0,0,0.94);
     border-bottom-color: var(--line-dark);
     height: 80px;
   }
@@ -152,19 +152,35 @@
     background: #000;
   }
   .hero-bg {
-    position: absolute; inset: -8% 0;
+    position: absolute; inset: -4% 0;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    background: #0a0a0a;
+  }
+  .hero-bg picture,
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .hero-bg img {
+    object-fit: cover;
+    object-position: 72% center;
+    transform: scale(1.04);
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute; inset: 0;
     background:
       linear-gradient(90deg,
         #000 0%,
-        #000 22%,
-        rgba(0,0,0,.78) 42%,
-        rgba(0,0,0,.35) 62%,
-        rgba(0,0,0,.12) 78%,
+        #000 18%,
+        rgba(0,0,0,.82) 38%,
+        rgba(0,0,0,.4) 58%,
+        rgba(0,0,0,.12) 76%,
         transparent 100%),
-      linear-gradient(180deg, rgba(0,0,0,.2) 0%, transparent 30%, rgba(0,0,0,.35) 100%),
-      url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/63817f69-f557-464f-a947-da2414cbd38d/hawratt-food-2.jpg") right center / cover no-repeat;
-    will-change: transform;
-    transform: translate3d(0,0,0) scale(1.06);
+      linear-gradient(180deg, rgba(0,0,0,.28) 0%, transparent 28%, rgba(0,0,0,.42) 100%);
+    pointer-events: none;
   }
   .hero-inner {
     position: relative; z-index: 2;
@@ -178,7 +194,6 @@
   }
   .hero-content {
     width: min(1000px, 100%);
-    will-change: transform, opacity;
   }
   .hero-eyebrow {
     font-family: var(--font-display);
@@ -264,7 +279,6 @@
     bottom: clamp(2rem, 8vh, 5.5rem);
     z-index: 3;
     width: min(360px, 88vw);
-    will-change: transform;
   }
   .hero-float-stack {
     position: absolute; inset: 8px -8px -8px 8px;
@@ -316,7 +330,7 @@
   .hero-float-card:hover .hero-float-img img { transform: scale(1.08); }
   @keyframes floatY {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
+    50% { transform: translateY(-8px); }
   }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -330,10 +344,11 @@
   }
   .marquee-track {
     display: flex; gap: 3rem; width: max-content;
-    animation: marquee 28s linear infinite;
+    animation: marquee 36s linear infinite;
     font-family: var(--font-display); font-size: 1.35rem;
     letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
   }
+  .marquee.is-paused .marquee-track { animation-play-state: paused; }
   .marquee-track span { display: inline-flex; align-items: center; gap: 3rem; }
   .marquee-track span::after {
     content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--orange-cta);
@@ -727,7 +742,6 @@
     min-height: clamp(420px, 48vw, 520px);
     box-shadow: 0 1px 0 rgba(11,11,11,.04);
     transform-style: preserve-3d;
-    will-change: transform;
     transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s;
   }
   .cat-card:nth-child(1) { margin-top: 0; }
@@ -886,7 +900,7 @@
     display: block;
   }
   #sigTitle, #sigSub {
-    will-change: opacity, transform;
+    transition: opacity .28s, transform .4s cubic-bezier(.22,1,.36,1);
   }
   .signature-gallery {
     position: relative;
@@ -974,11 +988,10 @@
   }
   .contact-strip-bg {
     position: absolute;
-    inset: -12% 0;
+    inset: -8% 0;
     background:
       linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.15) 38%, transparent 62%),
       url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/5ae25a75-0a88-49e4-9942-7c21d8c17695/contact-bg.jpg") right center / cover no-repeat;
-    will-change: transform;
   }
   .contact-strip .container {
     position: relative;
@@ -1159,11 +1172,10 @@
     box-shadow: 0 24px 50px rgba(0,0,0,.15);
   }
   .event-card .bg {
-    position: absolute; inset: -10%;
+    position: absolute; inset: -8%;
     background: center / cover no-repeat;
     transition: transform .8s cubic-bezier(.22,1,.36,1);
-    will-change: transform;
-    transform: translate3d(0, var(--py, 0px), 0) scale(1.08);
+    transform: translate3d(0, var(--py, 0px), 0) scale(1.05);
   }
   .event-card:hover .bg { transform: translate3d(0, var(--py, 0px), 0) scale(1.14); }
   .event-card .shade {
@@ -1457,32 +1469,25 @@
   /* SCROLL IN / OUT &mdash; Dinevo-style appear */
   .reveal {
     opacity: 0;
-    transform: translate3d(0, 72px, 0);
+    transform: translate3d(0, 36px, 0);
     transition:
-      opacity .85s cubic-bezier(.22,1,.36,1),
-      transform .85s cubic-bezier(.22,1,.36,1);
+      opacity .7s cubic-bezier(.22,1,.36,1),
+      transform .7s cubic-bezier(.22,1,.36,1);
     transition-delay: var(--d, 0ms);
-    will-change: opacity, transform;
   }
-  .reveal.from-left { transform: translate3d(-80px, 24px, 0); }
-  .reveal.from-right { transform: translate3d(80px, 24px, 0); }
-  .reveal.from-scale { transform: translate3d(0, 40px, 0) scale(.92); }
-  .reveal.tilt-l { transform: translate3d(-70px, 30px, 0) rotate(-8deg); }
-  .reveal.tilt-r { transform: translate3d(70px, 30px, 0) rotate(8deg); }
+  .reveal.from-left { transform: translate3d(-36px, 16px, 0); }
+  .reveal.from-right { transform: translate3d(36px, 16px, 0); }
+  .reveal.from-scale { transform: translate3d(0, 28px, 0) scale(.96); }
+  .reveal.tilt-l { transform: translate3d(-28px, 18px, 0); }
+  .reveal.tilt-r { transform: translate3d(28px, 18px, 0); }
   .reveal.visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    transform: translate3d(0, 0, 0) scale(1);
   }
-  .reveal.out-up {
-    opacity: 0;
-    transform: translate3d(0, -48px, 0);
+  section:not(.hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
   }
-  .reveal.out-down {
-    opacity: 0;
-    transform: translate3d(0, 72px, 0);
-  }
-
-  .marquee-track { will-change: transform; }
 
   .footer-col a {
     transition: color .25s, padding-left .3s;
@@ -1501,8 +1506,7 @@
       right: 0;
       height: 72px;
       padding: 0 clamp(.85rem, 3.5vw, 1.25rem);
-      background: rgba(0,0,0,.88);
-      backdrop-filter: blur(14px);
+      background: rgba(0,0,0,.92);
       border-bottom-color: rgba(255,255,255,.08);
       box-sizing: border-box;
     }
@@ -1514,12 +1518,20 @@
     .hero { padding: 0; width: 100%; }
     .hero-bg {
       inset: 0;
-      transform: none;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.25) 35%, rgba(0,0,0,.55) 100%),
-        linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.35) 48%, rgba(0,0,0,.15) 100%),
-        url("https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/63817f69-f557-464f-a947-da2414cbd38d/hawratt-food-2.jpg") center / cover no-repeat;
+      transform: none !important;
     }
+    .hero-bg img {
+      object-position: 62% center;
+      transform: none;
+    }
+    .hero-bg::after {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.28) 40%, rgba(0,0,0,.62) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,.18) 100%);
+    }
+    .hero-content,
+    .hero-float-card { transform: none !important; opacity: 1 !important; }
+    .hero-float-inner { animation: none; }
     .hero-inner {
       padding: clamp(5.5rem, 14vh, 7rem) clamp(1.15rem, 4vw, 2rem) clamp(7.5rem, 18vh, 10rem);
       justify-content: flex-end;
@@ -1761,9 +1773,14 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-bg" data-parallax="0.35" aria-hidden="true"></div>
+  <div class="hero-bg" data-parallax="0.18" aria-hidden="true">
+    <picture>
+      <source srcset="assets/hero.webp" type="image/webp" />
+      <img src="assets/hero.jpg" alt="" width="1800" height="1224" decoding="async" fetchpriority="high" />
+    </picture>
+  </div>
   <div class="hero-inner">
-    <div class="hero-content" data-parallax="0.1" data-parallax-fade="1">
+    <div class="hero-content" data-parallax="0.06" data-parallax-fade="1">
       <p class="hero-eyebrow">&#2326;&#2366; &#2352;&#2375; &#2361;&#2357;&#2352;&#2335;&#2381;&#2335;</p>
       <h1>Where Home<br />Meets Hunger</h1>
       <div class="hero-meta">
@@ -1780,7 +1797,7 @@
       </div>
     </div>
   </div>
-  <a class="hero-float-card" href="#signature" data-parallax="-0.18" aria-label="Experience our signature dishes">
+  <a class="hero-float-card" href="#signature" data-parallax="-0.08" aria-label="Experience our signature dishes">
     <div class="hero-float-stack" aria-hidden="true"></div>
     <div class="hero-float-inner">
       <div class="hero-float-top">
@@ -1961,14 +1978,14 @@
 <!-- VIDEO BLEED -->
 <section class="video-bleed" id="kitchen-video" aria-label="Behind the kitchen">
   <video
-    autoplay
+    id="kitchenVid"
     muted
     loop
     playsinline
-    preload="metadata"
+    preload="none"
     poster="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/57b01914-0c2b-4389-b181-929803ec8375/video-poster.jpg"
   >
-    <source src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/7aa75f14-d70a-4645-ac8b-893a466e2dbe/kitchen-video.mp4" type="video/mp4" />
+    <source data-src="https://cdn.storebox.ai/media/59d4d007-3b09-4f92-bb1a-76a1e16bdfe5/7aa75f14-d70a-4645-ac8b-893a466e2dbe/kitchen-video.mp4" type="video/mp4" />
   </video>
   <div class="video-bleed-edge" aria-hidden="true">
     <!-- Cream torn-edge bleed matching Dinevo reference -->
@@ -2446,49 +2463,78 @@
     });
   });
 
-  /* ---------- Scroll in / out (Dinevo-style appear) ---------- */
+  /* ---------- Scroll in (once) ---------- */
   const reveals = Array.from(document.querySelectorAll('.reveal'));
   if (!reduceMotion) {
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
-        const el = entry.target;
-        if (entry.isIntersecting) {
-          el.classList.add('visible');
-          el.classList.remove('out-up', 'out-down');
-        } else {
-          el.classList.remove('visible');
-          // Scroll out direction based on where element went
-          if (entry.boundingClientRect.top < 0) {
-            el.classList.add('out-up');
-            el.classList.remove('out-down');
-          } else {
-            el.classList.add('out-down');
-            el.classList.remove('out-up');
-          }
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
       });
-    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('visible'));
   }
 
-  /* ---------- Parallax engine ---------- */
-  const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
-  const parallaxImgs = Array.from(document.querySelectorAll('[data-parallax-img]'));
-  const parallaxBgs = Array.from(document.querySelectorAll('[data-parallax-bg]'));
-  const marqueeTrack = document.querySelector('.marquee-track');
-  let ticking = false;
+  /* ---------- Kitchen video: load/play only when visible ---------- */
+  const kitchenVid = document.getElementById('kitchenVid');
+  if (kitchenVid) {
+    const source = kitchenVid.querySelector('source[data-src]');
+    let videoLoaded = false;
+    const ensureSrc = () => {
+      if (videoLoaded || !source) return;
+      source.src = source.dataset.src;
+      source.removeAttribute('data-src');
+      kitchenVid.load();
+      videoLoaded = true;
+    };
+    const vidIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          ensureSrc();
+          kitchenVid.play().catch(() => {});
+        } else {
+          kitchenVid.pause();
+        }
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.15 });
+    vidIO.observe(kitchenVid);
+  }
 
-  function updateParallax() {
+  /* ---------- Pause marquee offscreen ---------- */
+  const marquee = document.querySelector('.marquee');
+  if (marquee) {
+    const mqIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        marquee.classList.toggle('is-paused', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    mqIO.observe(marquee);
+  }
+
+  /* ---------- Lightweight scroll + desktop-only parallax ---------- */
+  const canParallax =
+    !reduceMotion &&
+    window.matchMedia('(min-width: 981px) and (pointer: fine)').matches;
+  const parallaxEls = canParallax
+    ? Array.from(document.querySelectorAll('[data-parallax]'))
+    : [];
+  const parallaxBgs = canParallax
+    ? Array.from(document.querySelectorAll('[data-parallax-bg]'))
+    : [];
+  let ticking = false;
+  let lastSigCheck = 0;
+
+  function updateOnScroll() {
     const y = window.scrollY || window.pageYOffset;
     const vh = window.innerHeight;
-
     nav.classList.toggle('scrolled', y > 40);
 
-    if (!reduceMotion) {
+    if (canParallax) {
       parallaxEls.forEach((el) => {
-        const speed = parseFloat(el.dataset.parallax) || 0.2;
+        const speed = parseFloat(el.dataset.parallax) || 0.12;
         const fade = el.dataset.parallaxFade === '1';
         const isHeroLayer =
           el.classList.contains('hero-bg') ||
@@ -2496,60 +2542,54 @@
           el.classList.contains('hero-float-card');
         let offset;
         if (isHeroLayer) {
+          if (y > vh * 1.2) return;
           offset = y * speed;
         } else {
-          // Section-relative parallax (keeps lower sections like contact in view)
-          const rect = el.parentElement
-            ? el.parentElement.getBoundingClientRect()
-            : el.getBoundingClientRect();
-          const mid = rect.top + rect.height / 2 - vh / 2;
-          offset = mid * speed * -1;
+          const parent = el.parentElement;
+          if (!parent) return;
+          const rect = parent.getBoundingClientRect();
+          if (rect.bottom < -80 || rect.top > vh + 80) return;
+          offset = (rect.top + rect.height / 2 - vh / 2) * speed * -1;
         }
-        let transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
-        if (el.classList.contains('hero-bg') || el.classList.contains('contact-strip-bg')) {
-          transform = `translate3d(0, ${offset.toFixed(2)}px, 0) scale(1.08)`;
-        }
-        el.style.transform = transform;
+        const scale = el.classList.contains('hero-bg') || el.classList.contains('contact-strip-bg')
+          ? ' scale(1.04)'
+          : '';
+        el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)${scale}`;
         if (fade) {
-          const progress = Math.min(Math.max(y / (vh * 0.85), 0), 1);
-          el.style.opacity = String(1 - progress * 0.85);
+          const progress = Math.min(Math.max(y / (vh * 0.9), 0), 1);
+          el.style.opacity = String(1 - progress * 0.75);
         }
-      });
-
-      parallaxImgs.forEach((img) => {
-        const speed = parseFloat(img.dataset.parallaxImg) || 0.15;
-        const wrap = img.parentElement;
-        if (!wrap) return;
-        const rect = wrap.getBoundingClientRect();
-        const mid = rect.top + rect.height / 2 - vh / 2;
-        img.style.transform = `translate3d(0, ${mid * speed * -1}px, 0) scale(1.08)`;
       });
 
       parallaxBgs.forEach((bg) => {
-        const speed = parseFloat(bg.dataset.parallaxBg) || 0.12;
+        const speed = parseFloat(bg.dataset.parallaxBg) || 0.1;
         const card = bg.parentElement;
         if (!card) return;
         const rect = card.getBoundingClientRect();
         if (rect.bottom < 0 || rect.top > vh) return;
         const mid = rect.top + rect.height / 2 - vh / 2;
-        bg.style.setProperty('--py', `${(mid * speed * -1).toFixed(2)}px`);
+        bg.style.setProperty('--py', `${(mid * speed * -1).toFixed(1)}px`);
       });
     }
 
-    syncSigFromScroll();
+    const now = performance.now();
+    if (now - lastSigCheck > 80) {
+      syncSigFromScroll();
+      lastSigCheck = now;
+    }
     ticking = false;
   }
 
   function onScroll() {
     if (!ticking) {
-      requestAnimationFrame(updateParallax);
+      requestAnimationFrame(updateOnScroll);
       ticking = true;
     }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
-  updateParallax();
+  updateOnScroll();
 
   // Keep menu hover cards open while interacting with Book a Table
   document.querySelectorAll('.menu-card').forEach((card) => {
@@ -2569,19 +2609,20 @@
     });
   });
 
-  // Magnetic tilt on story + kitchen category cards
-  if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
-    document.querySelectorAll('.story-card, .cat-card').forEach((card) => {
-      card.style.transformStyle = 'preserve-3d';
+  // Light tilt on kitchen cards only (desktop fine-pointer)
+  if (!reduceMotion && window.matchMedia('(pointer:fine) and (min-width: 981px)').matches) {
+    document.querySelectorAll('.cat-card').forEach((card) => {
+      let frame = 0;
       card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        const lift = card.classList.contains('cat-card') ? 8 : 10;
-        const rx = card.classList.contains('cat-card') ? 7 : 5;
-        const ry = card.classList.contains('cat-card') ? 9 : 6;
-        card.classList.add('is-tilting');
-        card.style.transform = `translateY(-${lift}px) rotateX(${(-y * rx).toFixed(2)}deg) rotateY(${(x * ry).toFixed(2)}deg)`;
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.classList.add('is-tilting');
+          card.style.transform = `translateY(-6px) rotateX(${(-y * 5).toFixed(1)}deg) rotateY(${(x * 6).toFixed(1)}deg)`;
+        });
       });
       card.addEventListener('pointerleave', () => {
         card.classList.remove('is-tilting');
